@@ -1,0 +1,19 @@
+{
+  "name": "notes",
+  "version": "1.0.0",
+  "description": "Take quick notes",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "none",
+  "keywords": [
+    "Notes"
+  ],
+  "icon": "./favicon.ico",
+  "author": "Seth Vandebrooke",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "~1.7.8"
+  }
+}
