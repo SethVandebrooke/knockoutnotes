@@ -4,7 +4,7 @@ function KOArrayToArray(array) {
     for (var i = 0; i < array.length; i++) {
         var obj = {};
         for (var k in array[i]) {
-            obj[k] = array[i][k]();
+            obj[k] = "function" == typeof array[i][k] ? array[i][k](): array[i][k];
         }
         result.push(obj);
     }
@@ -19,12 +19,9 @@ function Bindings() {
     var app = this;
     app.appName = "Knockout Notes!";
     app.appDesc = "Make and take notes using what I can only describe as knockout and bootstrap had a baby.";
-    app.notes = ko.observableArray(JSON.parse(localStorage.getItem("notes"))||[]);
-    // load Notes
-    /*var loadedNotes = JSON.parse(localStorage.getItem("notes"));
-    for (var note in loadedNotes) {
-      app.notes.push(new Note(note.title,note.text,note.created));
-    }*/
+    var NOTES = JSON.parse(localStorage.getItem("notes"));
+    NOTES =  NOTES ? NOTES[0].title ? NOTES : [] : [];
+    app.notes = ko.observableArray(NOTES);
     app.note = ko.observable(new Note());
     app.changeNote = false;
 
